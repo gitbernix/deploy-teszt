@@ -1,0 +1,43 @@
+<div class="container my-3">
+    <h1>Welcome {{ firstName.value }} {{ lastName.value }}</h1>
+
+    <p>
+        <label class="form-label" for="firstName">First Name</label>
+        <input
+            class="form-control"
+            (keyup)="(0)"
+            type="text"
+            id="firstName"
+            #firstName
+        />
+    </p>
+
+    <p>
+        <label class="form-label" for="lastName">Last Name</label>
+        <input
+            class="form-control"
+            (keyup)="(0)"
+            type="text"
+            id="lastName"
+            #lastName
+        />
+    </p>
+    <button
+        class="btn btn-primary"
+        (click)="nameList.addUser(firstName.value, lastName.value)"
+        (click)="viewChildExample()"
+        #saveBtn
+    >
+        Save User
+    </button>
+    <button class="ms-2 btn btn-success" (click)="add()">
+        Add from parent
+    </button>
+
+    <app-name-list #nameList></app-name-list>
+
+    <p>
+        You have selected {{ nameList.selectedUser?.firstName }}
+        {{ nameList.selectedUser?.lastName }}
+    </p>
+</div>

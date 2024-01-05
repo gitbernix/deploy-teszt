@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-firebase-gitta-b": {
+      "hosting": {
+        "angular-firebase": [
+          "angular-firebase-gitta-b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-firebase-gitta-b"
+  }
+}

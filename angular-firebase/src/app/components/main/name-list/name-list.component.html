@@ -1,0 +1,14 @@
+<section class="contaier m-5">
+  <h2>Username List</h2>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let username of usersList">
+      {{ username.firstName }} {{ username.lastName }}
+      <button
+        class="btn btn-success btn-sm float-end"
+        (click)="selectUser(username)"
+      >
+        select
+      </button>
+    </li>
+  </ul>
+</section>

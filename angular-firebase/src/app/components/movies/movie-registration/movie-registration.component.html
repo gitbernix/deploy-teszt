@@ -1,0 +1,158 @@
+<div class="container">
+    <h2 class="mt-md-5 mb-5">Register your favorite movie</h2>
+    <form
+        *ngIf="movieForm"
+        class="row g-3"
+        [formGroup]="movieForm"
+        (ngSubmit)="saveMovie()"
+    >
+        <div class="col-md-7 mb-4">
+            <label for="inputMovieName" class="form-label fst-italic"
+                >Movie name</label
+            >
+            <input
+                type="text"
+                class="form-control"
+                id="inputMovieName"
+                formControlName="movieName"
+            />
+
+            <small
+                *ngIf="
+                    movieName?.dirty && movieName?.invalid && movieName?.errors
+                "
+                class="text-danger"
+                >Min 2, max 30 characters!</small
+            >
+        </div>
+
+        <div class="col-md-4">
+            <label for="director" class="form-label fst-italic">Director</label>
+            <input
+                type="text"
+                class="form-control"
+                id="director"
+                formControlName="director"
+            />
+
+            <small
+                *ngIf="director?.dirty && director?.invalid && director?.errors"
+                class="text-danger"
+                >Min 3, max 20 characters, and no numbers!</small
+            >
+        </div>
+
+        <div class="col-md-2 mb-3">
+            <label for="inputDuration" class="form-label fst-italic"
+                >Duration (minutes)</label
+            >
+            <input
+                type="number"
+                class="form-control"
+                id="inputDuration"
+                formControlName="duration"
+                [min]="10"
+                [max]="350"
+            />
+            <small
+                *ngIf="duration?.invalid && duration?.dirty"
+                class="text-danger"
+                >Between 10 and 350 minutes!</small
+            >
+        </div>
+
+        <div class="col-md-2">
+            <label for="inputReleaseDate" class="form-label fst-italic"
+                >Release date (only year)</label
+            >
+            <input
+                type="number"
+                class="form-control"
+                id="inputReleaseDate"
+                formControlName="releaseDate"
+                [min]="1970"
+                [max]="2023"
+            />
+            <small
+                *ngIf="releaseDate?.invalid && releaseDate?.dirty"
+                class="text-danger"
+                >Between 1970 and 2023!</small
+            >
+        </div>
+
+        <div class="col-md-3">
+            <label for="movieType" class="form-label fst-italic"
+                >Movie type</label
+            >
+            <select
+                id="movieType"
+                class="form-select"
+                formControlName="movieType"
+            >
+                <option
+                    *ngFor="let type of movieTypeOptions"
+                    [value]="type.key"
+                >
+                    {{ type.value }}
+                </option>
+            </select>
+            <small
+                *ngIf="movieType?.touched && movieType?.value === ''"
+                class="text-danger"
+                >Please select one!</small
+            >
+        </div>
+
+        <div class="col-md-4">
+            <label for="country" class="form-label fst-italic">Country</label>
+            <input
+                type="text"
+                class="form-control"
+                id="country"
+                formControlName="country"
+            />
+            <small
+                *ngIf="country?.dirty && country?.invalid && country?.errors"
+                class="text-danger"
+                >Min 2, max 25 characters!</small
+            >
+        </div>
+
+        <div class="col-md-11 mb-4">
+            <label for="description" class="form-label fst-italic"
+                >Description</label
+            >
+
+            <textarea
+                class="form-control"
+                name=""
+                id="description"
+                cols="30"
+                rows="8"
+                formControlName="description"
+            ></textarea>
+
+            <small
+                *ngIf="description?.hasError('customError')"
+                class="text-danger"
+            >
+                Forbidden word!
+            </small>
+
+            <small
+                *ngIf="
+                    description?.dirty &&
+                    description?.invalid &&
+                    !description?.hasError('customError')
+                "
+                class="text-danger"
+            >
+                Min 20, max 800 characters!
+            </small>
+        </div>
+
+        <div class="col-12 mb-5">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>

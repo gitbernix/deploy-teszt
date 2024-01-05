@@ -1,0 +1,123 @@
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <h3 class="my-5">Customer registration form</h3>
+                <div class="my-5">
+                    <form
+                        [formGroup]="customerRegForm"
+                        (ngSubmit)="submitRegForm()"
+                        novalidate
+                    >
+                        <div *ngIf="customerNo" class="form-floating my-2">
+                            <input
+                                class="form-control"
+                                type="text"
+                                id="customerNo"
+                                formControlName="customerNo"
+                                placeholder="Enter customer number..."
+                            />
+                            <label for="customerNo">Customer number</label>
+                            <div
+                                *ngIf="customerNo.invalid && customerNo.touched"
+                                class="small text-danger"
+                            >
+                                A customer number is required.
+                            </div>
+                        </div>
+                        <div *ngIf="name" class="form-floating my-2">
+                            <input
+                                class="form-control"
+                                id="name"
+                                type="text"
+                                formControlName="name"
+                                placeholder="Enter your name..."
+                            />
+                            <label for="name">Name</label>
+                            <div
+                                *ngIf="name.invalid && name.touched"
+                                class="small text-danger"
+                            >
+                                A name is required.
+                            </div>
+                        </div>
+                        <div *ngIf="address" class="form-floating my-2">
+                            <input
+                                class="form-control"
+                                id="address"
+                                type="text"
+                                formControlName="address"
+                                placeholder="Enter your address..."
+                            />
+                            <label for="address">Address</label>
+                            <div
+                                *ngIf="address.invalid && address.touched"
+                                class="small text-danger"
+                            >
+                                An address is required.
+                            </div>
+                        </div>
+                        <div *ngIf="city" class="form-floating my-2">
+                            <input
+                                class="form-control"
+                                id="city"
+                                type="text"
+                                formControlName="city"
+                                placeholder="Enter your city..."
+                            />
+                            <label for="city">City</label>
+                            <div
+                                *ngIf="city.invalid && city.touched"
+                                class="small text-danger"
+                            >
+                                An address is required.
+                            </div>
+                        </div>
+                        <div *ngIf="state" class="form-floating my-2">
+                            <input
+                                class="form-control"
+                                id="state"
+                                type="text"
+                                formControlName="state"
+                                placeholder="Enter your state..."
+                            />
+                            <label for="state">State</label>
+                            <div
+                                *ngIf="state.invalid && state.touched"
+                                class="small text-danger"
+                            >
+                                A state is required.
+                            </div>
+                        </div>
+                        <div *ngIf="country" class="form-floating my-2">
+                            <input
+                                class="form-control"
+                                id="country"
+                                type="text"
+                                formControlName="country"
+                                placeholder="Enter your country..."
+                            />
+                            <label for="country">Country</label>
+                            <div
+                                *ngIf="country.invalid && country.touched"
+                                class="small text-danger"
+                            >
+                                A country is required.
+                            </div>
+                        </div>
+
+                        <!-- Submit Button-->
+                        <button
+                            class="btn btn-primary text-uppercase mt-2"
+                            id="submitButton"
+                            type="submit"
+                            [disabled]="!customerRegForm.valid"
+                        >
+                            {{ updateCustomerId ? 'Update' : 'Registrate' }}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

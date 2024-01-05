@@ -1,0 +1,38 @@
+<div class="container" *ngIf="movies.length >= 1">
+    <h2 class="mt-md-5 mb-3">Your saved movies</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Director</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Release Date</th>
+                <th scope="col">Type</th>
+                <th scope="col">Country</th>
+                <th scope="col">Description</th>
+                <th scope="col">Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let movie of movies; index as i">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ movie.movieName }}</td>
+                <td>{{ movie.director }}</td>
+                <td>{{ movie.duration }} min</td>
+                <td>{{ movie.releaseDate }}</td>
+                <td>{{ movie.movieType }}</td>
+                <td>{{ movie.country }}</td>
+                <td>{{ movie.description }}</td>
+                <td>
+                    <button
+                        class="btn btn-danger"
+                        (click)="deleteMovie(movie.id)"
+                    >
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
